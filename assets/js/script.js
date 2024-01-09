@@ -1,10 +1,4 @@
-/** 
-Author: Build Rise Shine with Nyros (BRS) 
-Created: 2023 
-Library / Component: Script file
-Description: HTML 5 Canvas
-(c) Copyright by BRS with Nyros. 
-**/
+  
 
 /* Get Our Elements */
 const canvas = document.getElementById("draw");
@@ -78,3 +72,23 @@ num == 10;
 function addNum(a = 10, b = 20) {
   return a + b;
 }
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var canvas = document.getElementById('draw');
+    var context = canvas.getContext('2d');
+    var isErasing = false;
+
+    // Function to handle mouse down events
+    function startDrawing(e) {
+      isErasing ? context.clearRect(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop, 10, 10) :
+                  context.fillRect(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop, 10, 10);
+    }
+
+      
+
+    // Event listener for clear button
+    document.getElementById('clearButton').addEventListener('click', function () {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    });
+  });
